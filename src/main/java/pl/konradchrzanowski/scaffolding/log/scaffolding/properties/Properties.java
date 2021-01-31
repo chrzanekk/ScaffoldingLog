@@ -1,25 +1,36 @@
 package pl.konradchrzanowski.scaffolding.log.scaffolding.properties;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "properties")
 public class Properties {
-    private Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "properties_id")
+    private Long propertiesId;
+    @Column(name = "scaffolding_number")
     private String scaffoldingNumber;
+    @Column(name = "scaffolding_type")
     private String scaffoldingType;
-    private String scaffoldingLocalisation;
+    @Column(name = "scaffolding_location")
+    private String scaffoldingLocation;
+    @Column(name = "foundation_level")
     private Short foundationLevel;
+    @Column(name = "foreman")
     private String foreman;
 
-    public Properties(Long id, String scaffoldingNumber, String scaffoldingType, String scaffoldingLocalisation, Short foundationLevel, String foreman) {
-        this.id = id;
+
+
+    public Properties(String scaffoldingNumber, String scaffoldingType, String scaffoldingLocation, Short foundationLevel, String foreman) {
         this.scaffoldingNumber = scaffoldingNumber;
         this.scaffoldingType = scaffoldingType;
-        this.scaffoldingLocalisation = scaffoldingLocalisation;
+        this.scaffoldingLocation = scaffoldingLocation;
         this.foundationLevel = foundationLevel;
         this.foreman = foreman;
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public String getScaffoldingNumber() {
         return scaffoldingNumber;
@@ -29,8 +40,8 @@ public class Properties {
         return scaffoldingType;
     }
 
-    public String getScaffoldingLocalisation() {
-        return scaffoldingLocalisation;
+    public String getScaffoldingLocation() {
+        return scaffoldingLocation;
     }
 
     public Short getFoundationLevel() {
